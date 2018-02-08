@@ -1,0 +1,38 @@
+@mixin fluid-responsive-font-size(
+  $font_size_min_px: 1,
+  $font_size_max_px: 1000,
+  $viewport_width_min_px: 30,
+  $viewport_width_max_px: 30000
+) {
+  $viewport_width_min: $viewport_width_min_px * 1px;
+  $viewport_width_max: $viewport_width_max_px * 1px;
+  $font_size_max: $font_size_max_px * 1px;
+  $font_size_min: $font_size_min_px * 1px;
+
+  $font_size_min_stated_in_rem: 0.0625rem * $font_size_min_px;
+
+  $font_Size_Difference: $font_size_max - $font_size_min;
+  $viewport_Width_Difference: $viewport_width_max - $viewport_width_min;
+
+  $expression1: $font_size_min_stated_in_rem;
+  $expression2: $viewport_width_min / 100;
+  $expression3: 100 * $font_Size_Difference / $viewport_Width_Difference;
+
+  @media (min-width: $viewport_width_min) {
+    :root {
+      font-size: calc(#{$expression1} + ((1vw - #{$expression2}) * #{$expression3}));
+    }
+  }
+  @media (min-width: $viewport_width_max) {
+    :root {
+      font-size: $font_size_max;
+    }
+  }
+}
+
+@mixin fluid-responsive-font-size-simple-ver($viewport_width_min_px: 30) {
+  $font_size_min_px: 1;
+  $font_size_max_px: 10000;
+  $viewport_width_max_px: $viewport_width_min_px * $font_size_max_px;
+  @include fluid-responsive-font-size($font_size_min_px, $font_size_max_px, $viewport_width_min_px, $viewport_width_max_px)
+}
