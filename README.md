@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/mm0202/fluid-responsive-font-size/blob/master/LICENSE)
+
 # fluid-responsive-font-size
 ## 内容
 ウィンドウサイズに合わせて文字サイズが自動調整されるmixin
